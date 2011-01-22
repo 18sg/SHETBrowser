@@ -57,7 +57,7 @@ class SHETDirNode(SHETNode):
 	def data(self, column):
 		if column == 0:
 			return self._node_name
-		else if column == 1:
+		elif column == 1:
 			return "Directory"
 		else:
 			return None
@@ -66,7 +66,7 @@ class SHETEventNode(SHETNode):
 	def data(self, column):
 		if column == 0:
 			return self._node_name
-		else if column == 1:
+		elif column == 1:
 			return "Event"
 		else:
 			return None
@@ -75,7 +75,7 @@ class SHETActionNode(SHETNode):
 	def data(self, column):
 		if column == 0:
 			return self._node_name
-		else if column == 1:
+		elif column == 1:
 			return "Action"
 		else:
 			return None
@@ -84,7 +84,7 @@ class SHETPropertyNode(SHETNode):
 	def data(self, column):
 		if column == 0:
 			return self._node_name
-		else if column == 1:
+		elif column == 1:
 			return "Property"
 		else:
 			return None
