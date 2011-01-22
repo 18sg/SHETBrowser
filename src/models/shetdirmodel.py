@@ -17,7 +17,7 @@ class SHETDirModel(QtCore.QAbstractItemModel):
 		self._root_node = SHETDirNode('/', None)
 		
 		# Setup the directory tree structure.
-		setup_model_data(self._root_node)
+		self.setup_model_data(self._root_node, dir_info)
 	
 	def setup_model_data(self, parent, levelInfo):
 		"""
