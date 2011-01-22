@@ -32,3 +32,44 @@ class SHETDirModel(QtCore.QAbstractItemModel):
 				currentNode = NodeMap[value](name, parent)
 			if parent != None:
 				parent.append_child(currentNode)
+	
+	def index(self, row, column, parent):
+		"""
+		Return a QModelIndex of a child given a parent, row
+		and column.
+		"""
+		if not parent.isValid():
+			parentItem = slef._root_node
+		else:
+			parentItem = parent.internalPointer()
+		
+		childItem = parentItem.row(row)
+		return createIndex(row, column, childItem)
+		
+	def parent(self, child):
+		if not child.isValid():
+			return QtCore.QModelIndex()
+		parentObject = child.internalPointer().parent()
+		if parentItem == self._root_node:
+			return QtCore.QModelIndex()
+		return createIndex(parent.row(), 0, parentItem)
+	
+	def rowCount(self, index):
+		if not index.isValid():
+			return self._root_node.child_count()
+		return index.internalPointer().child_count()
+	
+	def columnCount(self, index):
+		return 2
+	
+	def data(self, index, role):
+		if not index.isValid():
+			return object
+		if role != QtCore.Qt.DisplayRole:
+			return object
+		return index.internalPointer.data(index.column())
+	
+	def flags(self, index):
+		if not index.isValid():
+			return 0
+		return QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsEnabled
