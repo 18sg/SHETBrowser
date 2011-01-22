@@ -38,21 +38,23 @@ class SHETDirModel(QtCore.QAbstractItemModel):
 		Return a QModelIndex of a child given a parent, row
 		and column.
 		"""
+		if not self.hasIndex(row, column, parent):
+			return QtCore.QModelIndex()
 		if not parent.isValid():
-			parentItem = slef._root_node
+			parentItem = self._root_node
 		else:
 			parentItem = parent.internalPointer()
 		
-		childItem = parentItem.row(row)
-		return createIndex(row, column, childItem)
+		childItem = parentItem.child(row)
+		return self.createIndex(row, column, childItem)
 		
 	def parent(self, child):
 		if not child.isValid():
 			return QtCore.QModelIndex()
 		parentObject = child.internalPointer().parent()
-		if parentItem == self._root_node:
+		if parentObject == self._root_node:
 			return QtCore.QModelIndex()
-		return createIndex(parent.row(), 0, parentItem)
+		return self.createIndex(parentObject.row(), 0, parentObjectItem)
 	
 	def rowCount(self, index):
 		if not index.isValid():
@@ -66,10 +68,10 @@ class SHETDirModel(QtCore.QAbstractItemModel):
 		if not index.isValid():
 			return object
 		if role != QtCore.Qt.DisplayRole:
-			return object
-		return index.internalPointer.data(index.column())
+			return QtCore.QVariant()
+		return index.internalPointer().data(index.column())
 	
 	def flags(self, index):
 		if not index.isValid():
 			return 0
-		return QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsEnabled
+		return QtCore.Qt.ItemIsEnabled
