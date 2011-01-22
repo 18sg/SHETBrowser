@@ -30,6 +30,12 @@ class SHETNode:
 		"""
 		return self._children[row]
 	
+	def parent(self):
+		"""
+		Return the parent for this object.
+		"""
+		return self._parent
+	
 	def child_count(self):
 		"""
 		Return the number of children for this object.
