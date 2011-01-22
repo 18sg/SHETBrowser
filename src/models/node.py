@@ -1,19 +1,12 @@
-class NodeType:
-	"""
-	A simple enum type to identify the type of node.
-	"""
-	directory, event, action, prop = range(4)
-
-class SHETNode:
+class SHETNode(object):
 	"""
 	A SHET node class represents all SHET nodes in the QAbstractModel.
 	It is used to build the tree view.
 	"""
-	def __init__(self, node_name, node_type, parent):
+	def __init__(self, node_name, parent):
 		#Set the parent, name and node type.
 		self._parent = parent
 		self._node_name = node_name
-		self._node_type = node_type
 		
 		#initialise the children list
 		self._children = list()
@@ -58,9 +51,49 @@ class SHETNode:
 		column = 0 Node name
 		column = 1 Node type
 		"""
+		return None
+
+class SHETDirNode(SHETNode):
+	def data(self, column):
 		if column == 0:
 			return self._node_name
 		else if column == 1:
-			return self._node_type
-		else
+			return "Directory"
+		else:
 			return None
+
+class SHETEventNode(SHETNode):
+	def data(self, column):
+		if column == 0:
+			return self._node_name
+		else if column == 1:
+			return "Event"
+		else:
+			return None
+
+class SHETActionNode(SHETNode):
+	def data(self, column):
+		if column == 0:
+			return self._node_name
+		else if column == 1:
+			return "Action"
+		else:
+			return None
+
+class SHETPropertyNode(SHETNode):
+	def data(self, column):
+		if column == 0:
+			return self._node_name
+		else if column == 1:
+			return "Property"
+		else:
+			return None
+
+"""
+Define a dict for mapping SHET string node types to
+SHETNode subclass types.
+"""
+NodeMap = {'action' : SHETActionNode, 
+           'event' : SHETEventNode,
+           'prop' : SHETPropertyNode}
+
