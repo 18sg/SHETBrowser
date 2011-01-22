@@ -27,6 +27,6 @@ class SHETDirModel(QtCore.QAbstractItemModel):
 		for name, value in levelInfo.iteritems():
 			if isinstance(value, dict):
 				currentNode = SHETDirNode(name, parent)
-				setup_model_data(currentNode, value)
+				self.setup_model_data(currentNode, value)
 			else:
 				currentNode = NodeMap[value](name, parent)
