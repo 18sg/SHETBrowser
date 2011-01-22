@@ -1,7 +1,7 @@
 from PyQt4 import QtCore
 import node
 
-class SHETDirModel(QtCore.QAbstractModel):
+class SHETDirModel(QtCore.QAbstractItemModel):
 	"""
 	A subclass of the QAbstractModel that provides
 	a tree-like dir read only model to a QTreeView.
@@ -29,5 +29,5 @@ class SHETDirModel(QtCore.QAbstractModel):
 			if isinstance(value, dict):
 				currentNode = SHETDirNode(name, parent)
 				setup_model_data(currentNode, value)
-			else
+			else:
 				currentNode = NodeMap[value](name, parent)
