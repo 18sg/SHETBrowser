@@ -21,10 +21,10 @@ class SHETDirModel(QtCore.QAbstractModel):
 		setup_model_data(self._root_node)
 	
 	def setup_model_data(self, parent, levelInfo):
-	"""
-	Given the dictionary returned from ls-r Construct
-	the shet directory tree.
-	"""
+		"""
+		Given the dictionary returned from ls-r Construct
+		the shet directory tree.
+		"""
 		for name, value in levelInfo.iteritems():
 			if isinstance(value, dict):
 				currentNode = SHETDirNode(name, parent)
