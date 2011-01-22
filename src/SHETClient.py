@@ -11,3 +11,6 @@ class SHETBrowserClient(ShetClient):
 	
 	def list_dir(self, path):
 		return self.call("/meta/ls", path)
+	
+	def list_dir_r(self):
+		return self.call("/meta/ls-r")
