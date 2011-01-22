@@ -15,7 +15,6 @@ class SHETDirModel(QtCore.QAbstractItemModel):
 		
 		# Create the root node object.
 		self._root_node = SHETDirNode('/', None)
-		self._shet_client = shet_client
 		
 		# Setup the directory tree structure.
 		setup_model_data(self._root_node)
