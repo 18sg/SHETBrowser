@@ -30,3 +30,5 @@ class SHETDirModel(QtCore.QAbstractItemModel):
 				self.setup_model_data(currentNode, value)
 			else:
 				currentNode = NodeMap[value](name, parent)
+			if parent != None:
+				parent.append_child(currentNode)
