@@ -1,5 +1,5 @@
 from PyQt4 import QtCore
-import node
+from node import *
 
 class SHETDirModel(QtCore.QAbstractItemModel):
 	"""
