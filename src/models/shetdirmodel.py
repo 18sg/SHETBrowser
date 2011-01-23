@@ -67,8 +67,10 @@ class SHETDirModel(QtCore.QAbstractItemModel):
 	def data(self, index, role):
 		if not index.isValid():
 			return object
-		if role == QtCore.Qt.DecorationRole:
+		if role == QtCore.Qt.DecorationRole and index.column() == 0:
 			return index.internalPointer().get_icon()
+		elif role == QtCore.Qt.DecorationRole:
+			return QtCore.QVariant()
 		if role != QtCore.Qt.DisplayRole:
 			return QtCore.QVariant()
 		return index.internalPointer().data(index.column())
