@@ -59,6 +59,11 @@ class SHETNode(object):
 		Return the icon for this node type.
 		"""
 		return QIcon()
+	def get_full_path(self):
+		if self.parent() == None:
+			return ""
+		else:
+			return self.parent().get_full_path() + "/" + self._node_name
 
 class SHETDirNode(SHETNode):
 	def data(self, column):
