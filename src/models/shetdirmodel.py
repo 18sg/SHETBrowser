@@ -78,7 +78,7 @@ class SHETDirModel(QtCore.QAbstractItemModel):
 	def flags(self, index):
 		if not index.isValid():
 			return 0
-		return QtCore.Qt.ItemIsEnabled
+		return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable
 	
 	def headerData(self, section, orientation, role):
 		if orientation == QtCore.Qt.Horizontal and role == QtCore.Qt.DisplayRole:
