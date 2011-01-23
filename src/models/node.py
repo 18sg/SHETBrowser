@@ -69,7 +69,7 @@ class SHETDirNode(SHETNode):
 		else:
 			return None
 	def get_icon(self):
-		return QIcon("folder.png")
+		return QIcon("icons/folder.png")
 
 class SHETEventNode(SHETNode):
 	def data(self, column):
@@ -80,7 +80,7 @@ class SHETEventNode(SHETNode):
 		else:
 			return None
 	def get_icon(self):
-		return QIcon("event.png")
+		return QIcon("icons/event.png")
 
 class SHETActionNode(SHETNode):
 	def data(self, column):
@@ -91,7 +91,7 @@ class SHETActionNode(SHETNode):
 		else:
 			return None
 	def get_icon(self):
-		return QIcon("action.png")
+		return QIcon("icons/action.png")
 
 class SHETPropertyNode(SHETNode):
 	def data(self, column):
@@ -102,7 +102,7 @@ class SHETPropertyNode(SHETNode):
 		else:
 			return None
 	def get_icon(self):
-		return QIcon("property.png")
+		return QIcon("icons/property.png")
 
 """
 Define a dict for mapping SHET string node types to
