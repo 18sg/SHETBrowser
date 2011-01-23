@@ -1,4 +1,4 @@
-from PyQt4 import QtCore
+from PyQt4 import QtCore, QtGui
 from node import *
 
 class SHETDirModel(QtCore.QAbstractItemModel):
@@ -54,7 +54,7 @@ class SHETDirModel(QtCore.QAbstractItemModel):
 		parentObject = child.internalPointer().parent()
 		if parentObject == self._root_node:
 			return QtCore.QModelIndex()
-		return self.createIndex(parentObject.row(), 0, parentObjectItem)
+		return self.createIndex(parentObject.row(), 0, parentObject)
 	
 	def rowCount(self, index):
 		if not index.isValid():
@@ -67,6 +67,8 @@ class SHETDirModel(QtCore.QAbstractItemModel):
 	def data(self, index, role):
 		if not index.isValid():
 			return object
+		if role == QtCore.Qt.DecorationRole:
+			return index.internalPointer().get_icon()
 		if role != QtCore.Qt.DisplayRole:
 			return QtCore.QVariant()
 		return index.internalPointer().data(index.column())

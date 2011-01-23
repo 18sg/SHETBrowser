@@ -1,3 +1,5 @@
+from PyQt4.QtGui import QIcon
+
 class SHETNode(object):
 	"""
 	A SHET node class represents all SHET nodes in the QAbstractModel.
@@ -52,6 +54,11 @@ class SHETNode(object):
 		column = 1 Node type
 		"""
 		return None
+	def get_icon(self):
+		"""
+		Return the icon for this node type.
+		"""
+		return QIcon()
 
 class SHETDirNode(SHETNode):
 	def data(self, column):
@@ -61,6 +68,8 @@ class SHETDirNode(SHETNode):
 			return "Directory"
 		else:
 			return None
+	def get_icon(self):
+		return QIcon("folder.png")
 
 class SHETEventNode(SHETNode):
 	def data(self, column):
